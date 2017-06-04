@@ -1,9 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
-function bienvenida() {
-
-	console.log( 'Hello World' );
-}
 /* Puede observar que no se declara ninguna var */
 // integramos las librerias jQuery
 global.jQuery = require( 'jquery' );
@@ -13,7 +9,22 @@ bootstrap = require( 'bootstrap' );
 mustache = require ( 'mustache' );
 
 jQuery( 'document' ).ready( function() {
-	bienvenida();
+
+/* TODAS MIS FUNCIONES AQUI */
+
+
+/* TODOS MIS EVENTOS AQUI */
+jQuery( '#formulario input[type=submit]' ).on( 'click', function( e ) {
+
+	e.preventDefault();
+	
+	var nombre = jQuery( '#formulario input[type=nombre]' ).val();
+	var correo = jQuery( '#formulario input[type=correo]' ).val();
+	
+	console.log( nombre )
+});
+	
+	
 });
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"bootstrap":2,"jquery":15,"mustache":16}],2:[function(require,module,exports){

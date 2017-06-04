@@ -35,6 +35,7 @@ gulp.task( 'js', function() {
 		.pipe( concat( 'script.js' ) ) // archivo que contiene todas las concatenaciónes de fuentesJS
 		.pipe( browserify() ) // agregamos browserify a nuestra tarea de concatenación
 		.pipe( gulp.dest( 'app/js' ) ) // el destino donde se va a guardar nuestro js con todas las concatenaciónes
+		.pipe( reload({ stream: true }) ) // permite que los archivos se puedan recargar
 } );
 
 /* difinimos una tarea nueva, la cual se va a encargar de realizar los cambios en el navegador en tiempo real. Indicando el nombre de la tarea y como segundo paramatro la tarea que ejecuta antes de ejecutar la función */
@@ -51,8 +52,9 @@ gulp.task( 'serve', [ 'sass' ], function() {
 /* creamos la tarea que se va a encargar de estar revisando los cambios en nuestros archivos */
 gulp.task( 'watch', [ 'sass','serve', 'js' ], function(){
 
-	/* para poder escuchar los cambios en sass, necesita ejecutar la tarea [ 'sass' ] */
+	/* 1erParametro: Ruta de donde tiene que escuchar los archivos. 2erParametro: tarea a realizar despues de escuchar los cambios de los archivos. */
 	gulp.watch( [ 'scss/*.scss' ], [ 'sass' ] );
+	gulp.watch( [ 'js/*.js' ], [ 'js' ] );
 } );
 
 /* agrega la tarea para cuando en la terminar cuando corramos el comando "gulp" se realice esta tarea */

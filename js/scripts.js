@@ -1,11 +1,15 @@
-/* Puede observar que no se declara ninguna var */
-// integramos las librerias jQuery
-global.jQuery = require( 'jquery' );
-// agregamos las librerias bootstrap
-bootstrap = require( 'bootstrap' );
-// agregamos las librerias mustache
-mustache = require ( 'mustache' );
 
-jQuery( 'document' ).ready( function() {
-	bienvenida();
+
+/* TODOS MIS EVENTOS AQUI */
+jQuery( '#formulario input[type=submit]' ).on( 'click', function( e ) {
+
+	e.preventDefault();
+	
+	var nombre = jQuery( '#formulario input[type=nombre]' ).val();
+	var correo = jQuery( '#formulario input[type=correo]' ).val();
+	
+	console.log( nombre )
+});
+	
+	
 });

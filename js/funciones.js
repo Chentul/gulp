@@ -1,4 +1,11 @@
-function bienvenida() {
+/* Puede observar que no se declara ninguna var */
+// integramos las librerias jQuery
+global.jQuery = require( 'jquery' );
+// agregamos las librerias bootstrap
+bootstrap = require( 'bootstrap' );
+// agregamos las librerias mustache
+mustache = require ( 'mustache' );
 
-	console.log( 'Hello World' );
-}
+jQuery( 'document' ).ready( function() {
+
+/* TODAS MIS FUNCIONES AQUI */
