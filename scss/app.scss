@@ -1,0 +1,57 @@
+@import 'variables.scss';
+body { 
+	text-align: center;
+}
+h1 { 
+	margin-top: 50px;
+	transform: rotate(0deg);
+	span { 
+		padding: 2.5px 7.5px;
+		background: $colorNaranja;
+		border-radius: 69% 34% 67% 46%;
+		text-shadow: 3px 3px 7px white;
+	}
+}
+form {
+	display: inline-block;
+	padding: 20px;
+	border: 1px dashed $colorNaranja;
+	.form-group { 
+		display: block;
+		width: 100%;
+		margin: 5px 0px;
+		label { 
+			font-size: 16px;
+			display: block;
+			text-align: left;
+			padding: 2.5px 0px;
+		}
+		input[type=text] {
+			width: 100%;
+			border: 0px;
+			border-bottom: 1px solid #000;
+			font-size: 16px;
+			&:focus {
+				outline: none;
+			}
+		}
+		input[type=submit] {
+			margin: 10px auto 0px auto;
+			width: 100%;
+			border: 0px;
+			padding: 10px;
+			background: gold;
+			font-size: 16px;
+			border-bottom: 5px solid $colorNaranja;
+			border-radius: 5px;
+			cursor: pointer;
+			&:active {
+				margin-top: 15px;
+				border: 0px;
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+}
