@@ -5,6 +5,7 @@ var reload = browserSync.reload; // propiedad de browserSync
 var autoprefixer = require( 'gulp-autoprefixer' ); // agregamos la dependencia
 var concat = require( 'gulp-concat' ) // agregamos la dependencia del paquete
 var browserify = require( 'gulp-browserify' ); // agregamos las dependencias
+var merge = require( 'merge-stream' ); // agregamos las dependencias
 
 // Se agregan los archivos js
 var fuentesJS = [
@@ -13,20 +14,26 @@ var fuentesJS = [
 ];
 
 
-
 /* definimos la tarea sass */
 gulp.task( 'sass', function() {
 
-	// origen del archivo
-	gulp.src( 'scss/app.scss' )
-		.pipe(autoprefixer()
-    	)
-		.pipe( sass({
+	var archivosSASS;
+	var archivosCSS;
 
+	// guardamos el origen de nuestros archivos
+	archivosSASS = gulp.src( 'scss/app.scss' )
+		.pipe( autoprefixer() )
+		.pipe( sass({
 			includePaths: [ 'scss' ]
-		}) )
-		// destino del archivo
-		.pipe( gulp.dest( 'app/css' ) );
+		}) );
+	// guardamos el origen de nuestros archivos
+	archivosCSS = gulp.src( './node_modules/bootstrap/dist/css/bootstrap.css' );
+
+	// realiza nuestra concatenación de nuestros archivos
+	return merge( archivosSASS, archivosCSS )
+		.pipe( concat( 'app.css' ) )
+		.pipe( gulp.dest( 'app/css/' ) );
+
 } );
 
 gulp.task( 'js', function() {
