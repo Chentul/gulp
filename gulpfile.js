@@ -4,6 +4,7 @@ var browserSync = require( 'browser-sync' ); // agregamos la dependencia
 var reload = browserSync.reload; // propiedad de browserSync
 var autoprefixer = require( 'gulp-autoprefixer' ); // agregamos la dependencia
 var concat = require( 'gulp-concat' ) // agregamos la dependencia del paquete
+var browserify = require( 'gulp-browserify' ); // agregamos las dependencias
 
 // Se agregan los archivos js
 var fuentesJS = [
@@ -31,8 +32,9 @@ gulp.task( 'sass', function() {
 gulp.task( 'js', function() {
 
 	gulp.src( fuentesJS )
-		.pipe( concat( 'script.js' ) )
-		.pipe( gulp.dest( 'app/js' ) )
+		.pipe( concat( 'script.js' ) ) // archivo que contiene todas las concatenaciónes de fuentesJS
+		.pipe( browserify() ) // agregamos browserify a nuestra tarea de concatenación
+		.pipe( gulp.dest( 'app/js' ) ) // el destino donde se va a guardar nuestro js con todas las concatenaciónes
 } );
 
 /* difinimos una tarea nueva, la cual se va a encargar de realizar los cambios en el navegador en tiempo real. Indicando el nombre de la tarea y como segundo paramatro la tarea que ejecuta antes de ejecutar la función */
